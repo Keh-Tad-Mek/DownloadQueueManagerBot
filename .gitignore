@@ -4,6 +4,10 @@
 venv/
 .venv/
 pyvenv.cfg
+bin/
+include/
+lib/
+lib64/
 
 __pycache__/
 *.pyc
