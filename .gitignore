@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+venv/
+.venv/
+pyvenv.cfg
+
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite
+downloads/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
