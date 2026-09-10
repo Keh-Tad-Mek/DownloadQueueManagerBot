@@ -7,7 +7,7 @@ pyvenv.cfg
 bin/
 include/
 lib/
-lib64/
+lib64
 
 __pycache__/
 *.pyc
