@@ -7,7 +7,7 @@ from telegram.ext import MessageHandler
 from telegram.ext import filters
 from dotenv import load_dotenv
 from file_handler import get_file_from_message, format_file_info
-from utils.validate_queue_name import validate_queue_name
+from utils.validate_queue_name import name_is_valid
 
 load_dotenv()
 
@@ -46,11 +46,14 @@ async def create_queue(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "Usage: /createQueue <queue_name>")
 
 
-    queueName = context.args[0]
-    validate_queue_name(queueName)
+    queue_name = context.args[0]
 
-
+    is_valid, message = name_is_valid(queue_name)
     
+    if not is_valid:
+        await update.message.reply_text(message)
+        return
+
 
     
 def main():
