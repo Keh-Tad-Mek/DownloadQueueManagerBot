@@ -6,7 +6,7 @@ from telegram.ext import ContextTypes
 from telegram.ext import MessageHandler
 from telegram.ext import filters
 from dotenv import load_dotenv
-from file_handler import get_file_from_message, format_file_info
+from Handle_file.handle_file import handle_file
 from utils.validate_queue_name import name_is_valid
 
 load_dotenv()
@@ -18,18 +18,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "Welcome"
     )
-
-
-async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    message = update.message
-    label, file_obj = get_file_from_message(message)
-
-    if not file_obj:
-        await message.reply_text("Unknown file type.")
-        return
-
-    response = format_file_info(label, file_obj)
-    await message.reply_text(response, parse_mode="Markdown")
 
 
 async def create_queue(update: Update, context: ContextTypes.DEFAULT_TYPE):
