@@ -7,7 +7,7 @@ from telegram.ext import MessageHandler
 from telegram.ext import filters
 from dotenv import load_dotenv
 from Handle_file.handle_file import handle_file
-import Queue_creation.create_queue as create_queue
+from Queue_creation.create_queue import create_queue
 
 load_dotenv()
 
