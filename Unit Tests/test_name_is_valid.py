@@ -1,5 +1,5 @@
 import unittest
-from utils.validate_queue_name import name_is_valid
+from Queue_creation.validate_queue_name import name_is_valid
 
 
 class TestNameIsValid(unittest.TestCase):
