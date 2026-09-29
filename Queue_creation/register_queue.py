@@ -14,7 +14,7 @@ def register_queue(queue_name, user_id):
                 existing_queue = cursor.fetchone()
 
                 if existing_queue:
-                    return False, "Queue already exists."
+                    return False, "You already have a queue with the same name."
 
                 # Insert the new queue into the database
                 cursor.execute("INSERT INTO queues (queue_name, user_id) VALUES (%s, %s)", (queue_name, user_id))

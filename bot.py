@@ -19,7 +19,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Welcome"
     )
 
-
     
 def main():
     # tells the server to listen to the bot that has this token
