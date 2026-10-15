@@ -1,4 +1,5 @@
 from telegram import Message 
+from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 FILE_TYPES = {
     "document": ("Document", lambda m: m.document),
@@ -19,7 +20,7 @@ def get_file_from_message(message: Message):
 def format_file_info(label: str, file_obj):
     response = ""
     if hasattr(file_obj, "file_name") and file_obj.file_name:
-        response += f"Name: `{file_obj.file_name}` \n"
+        response += f"📁 `{file_obj.file_name}` \n"
 
 
     return response
