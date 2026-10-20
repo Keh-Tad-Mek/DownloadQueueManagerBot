@@ -54,5 +54,6 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ])
 
     response = format_file_info(label, file_obj)
-    await message.reply_text(response, parse_mode="Markdown")
-    await message.reply_text("Choose what to do with this item:", reply_markup=add_individual)
+    response += "\nChoose what to do with this item:"
+
+    await message.reply_text(response, parse_mode="Markdown", reply_markup=add_individual)

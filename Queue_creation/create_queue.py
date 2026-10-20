@@ -15,7 +15,7 @@ async def create_queue(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Usage: /createQueue <queue_name>")
 
     if len(context.args) > 1:
-        await update.message.reply_text("No spaces allowed in queue name. \n" \
+        return await update.message.reply_text("No spaces allowed in queue name. \n" \
                     "Only letters, numbers, and underscores are allowed. \n" \
                     "Usage: /createQueue <queue_name>")
 
