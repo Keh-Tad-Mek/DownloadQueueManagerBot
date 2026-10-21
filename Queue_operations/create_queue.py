@@ -1,8 +1,8 @@
 import os
 from telegram import Update
 from telegram.ext import ContextTypes
-from Queue_creation.validate_queue_name import name_is_valid
-from Queue_creation.register_queue import register_queue
+from Queue_operations.validate_queue_name import name_is_valid
+from Queue_operations.register_queue import register_queue
 
 async def create_queue(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
