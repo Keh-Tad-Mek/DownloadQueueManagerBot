@@ -8,9 +8,10 @@ from telegram.ext import filters
 from telegram.ext import CallbackQueryHandler
 from dotenv import load_dotenv
 from Handle_file.handle_file import handle_file
-from Handle_file.button_handlers import handle_add_to_queue, choose_queue, handle_delete_queue
+from Handle_file.button_handlers import handle_add_to_queue, choose_queue, handle_delete_queue, handle_show_queue
 from Queue_operations.retreive_queues import list_queues
 from Queue_operations.create_queue import create_queue
+
 
 
 load_dotenv()
@@ -40,7 +41,7 @@ def main():
     app.add_handler(CallbackQueryHandler(handle_add_to_queue, pattern="^add:"))
     app.add_handler(CallbackQueryHandler(choose_queue, pattern="^pickQueue:"))
     app.add_handler(CallbackQueryHandler(handle_delete_queue, pattern="^delqueue:"))
-
+    app.add_handler(CallbackQueryHandler(handle_show_queue, pattern="^showqueue"))
 
     # tells the bot to start polling for updates from Telegram
     app.run_polling()

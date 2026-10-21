@@ -3,7 +3,28 @@ from telegram.ext import ContextTypes
 from db.get_queues import get_user_queues
 from db.add_to_queues import add_to_queue
 from db.remove_queues import delete_queue
+from db.get_queue_items import get_queue_items
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+
+
+async def handle_show_queue(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    queue_id = int(query.data.split(":")[1])
+    # Fetch items for this queue from your DB
+    items = get_queue_items(queue_id) 
+
+    if not items:
+        await query.edit_message_text("This queue is empty.")
+        return
+
+    await query.edit_message_text(f"Sending {len(items)} items...")
+    
+    for item_id, file_id, position, status in items:
+        # This sends the file using the file_id
+        await context.bot.send_document(chat_id=query.message.chat_id, document=file_id.strip())
+
 
 async def handle_delete_queue(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
